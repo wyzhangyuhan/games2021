@@ -1,0 +1,61 @@
+var translate_dic = new Array();
+var language = $("#langtype").val();
+$(function () {
+        $.ajax({
+            url: "http://newstatic.icrp.xjtu.edu.cn/Language/Language.xml",
+            dataType: 'xml',
+            type: 'GET',
+            timeout: 2000,
+            error: function (xml) {
+         
+            },
+            success: function (xml) {
+                $(xml).find("item").each(function (i) {
+                    var key = $(this).attr("key");
+                    var translateVale = "";
+                    if (language == "Chinese") {
+                        translateVale = $(this).attr("ch");
+                    }
+                    if (language == "English") {
+                        translateVale = $(this).attr("en");
+                    }
+                    var translate = new Object();
+                    translate.key = key;
+                    translate.value = translateVale;
+                    translate_dic.push(translate);
+                });
+
+
+            }
+    });
+
+});
+var Translate = function (key) {
+    //var a2 = translate_dic.find(function (obj) {
+    //    return obj.key== key;
+	//});
+    var a2 = ""
+
+    var TranslateList = window.TranslateList;
+    if (TranslateList) {
+        var translate_dic = JSON.parse(TranslateList)
+        $.each(translate_dic, function (i, e) {
+            if (e.key === key) {
+                a2 = e
+                return false
+            }
+        })
+        if (language == "Chinese") {
+            return a2.ch||key;
+        }
+        if (language == "English") {
+            return a2.en||key;
+        }
+        return key;
+    }
+     else {
+       return key;
+    }
+    
+}
+

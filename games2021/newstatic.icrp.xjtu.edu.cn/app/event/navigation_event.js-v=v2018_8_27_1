@@ -1,0 +1,82 @@
+// 导航 按钮个数处理 更多按钮及其下拉菜单
+$(function () {
+    var $menu = $(".widget-tabs-o-channel");
+    if ($menu.length) {
+        var $ul = $menu.find("ul");
+        var $lis = $menu.find("ul li");
+        var $maxWidth = $(".widget-head").width();
+        var $ulWidth = 0;
+        var $liNum = 0
+        $(window).resize(function () {
+            var datawidth = $menu.find('.dataWidth').html();
+            var $maxwidth2 = $menu.find(".widget-head").width() - 10;
+            //console.log("$maxwidth2", $maxwidth2);
+            if ($maxwidth2 == datawidth || $maxwidth2 > $menu.find(".widget-head").children("ul").width()) {
+                return false;
+            }
+            else {
+                $menu.find(".dataWidth").text($maxwidth2);
+                //console.log("ddd");
+                var $removeHtml = $(".widget-tabs-o-channel li.dropdown").find(".dropdown-menu").html();
+                if (!$removeHtml) {
+                    return false;
+                }
+                $removeHtml = $removeHtml.replace(/<div/g, "<li").replace(/<\/div>/g, "</li>");
+                $ul.find("li.dropdown").remove();
+                $ul.append($removeHtml);
+                $lis = $menu.find("ul li");
+                navList($maxwidth2);
+            }
+        });
+        function navList($maxWidth) {
+            $menu.find(".widget-head li").each(function () {
+                $liNum++;
+                $ulWidth = $(this).width() + $ulWidth;
+                if ($ulWidth > $maxWidth) {
+                    var $width = $menu.find(".widget-head li").eq($liNum - 3).width();
+                    var $width2 = $("li.dropdown").width();
+                    if (($ulWidth - $width + $width2) > $maxWidth) {
+                        $liNum = $liNum - 2; return false;
+                    }
+                    else {
+                        $liNum = $liNum - 1;
+                    }
+                    return false;
+                }
+            });
+            //console.log($liNum);
+            if ($ulWidth > $maxWidth) {
+                var $liMores = $lis.filter(":gt(" + ($liNum - 2) + ")");
+                var $liscloneHtml = $menu.find("ul").clone().find("li:lt(" + ($liNum - 1) + "),li.active,span.dataWidth").remove().end().html();
+                var $indexLI = $menu.find(".widget-head li.active").index();
+                /*    if ($indexLI >= --$liNum) {
+                    var $liscloneHtml = $menu.find("ul").clone().find("li:lt(" + ($liNum - 1) + "),li.active,span.dataWidth").remove().end().html();
+                    $menu.find("ul").find("li").eq($liNum - 1).remove();
+                }*/
+                if ($indexLI >= $liNum - 1) {
+                    var $liscloneHtml = $menu.find("ul").clone().find("li:lt(" + ($liNum - 2) + "),li.active,span.dataWidth").remove().end().html();
+                    $menu.find("ul").find("li").eq($liNum - 2).remove();
+                }
+                var $lisHtml = $liscloneHtml.replace(/<li/g, "<div").replace(/<\/li>/g, "</div>");
+                var $liToList = $liMores.filter(":not(.active)");
+                var lang = $("html").attr("lang");
+                var More = "";
+                if (lang) {
+                    More = lang == "en" ? "More" : "更多";
+                }
+                if ($liToList.length) {
+                    $liToList.remove();
+                    var $appendLi = '<li class="dropdown">\
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">'+ More+'<span class="caret"></span></a>\
+                            <div class="dropdown-menu" role="menu" aria-labelledby="drop3"></div></li>';
+                    $ul.append($appendLi);
+                    $ul.find("li:last-child").find(".dropdown-menu").html($lisHtml);
+                }
+                $menu.removeClass("hide");
+                $ulWidth = null;
+                $liNum = null;
+            }
+        }
+        navList($maxWidth);
+    }
+});

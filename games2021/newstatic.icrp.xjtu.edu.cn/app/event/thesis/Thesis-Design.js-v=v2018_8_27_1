@@ -1,0 +1,102 @@
+
+$(function () {
+    //发送短信验证。
+    $("#send_login").live("click", function () {
+        var userName = $("#loginName_UserName").val();
+        if (!userName) {
+            util.alertError("手机号或者邮箱未填写！");
+            return false;
+        }
+
+        var eventId = $("#eventId").val();
+        var btn = $(this);
+        btn.val("正在发送").attr("disabled", "disabled");
+        var url = currentDomain + "/" + eventId + "/Index/SendMobileRandomCode";
+        var userName = $("#loginName_UserName").val();
+        util.AjaxPostData(url, "MobileOrEmail=" + userName, function (data) {
+            if (data.code == 0) {
+                settime(btn);
+            }
+        });
+    })
+    //登陆
+    $("#loginBtn").on("click", function () {
+        var userName = $("#loginName_UserName").val();
+        if (!userName) {
+            util.alertError("手机号或者邮箱未填写！");
+            return false;
+        }
+
+        var eventId = $("#eventId").val();
+        var code = $("#dynamicpwd").val();
+        if (!code) {
+            util.alertError("动态密码未填写！");
+            return false;
+        }
+
+        var url = currentDomain + "/" + eventId + "/Index/SubmitLoginJoinUser";
+
+        util.AjaxPostData(url, { MobileOrEmail: userName, Code: code }, function (data) {
+            if(data.result==true)
+            {
+                $("#JoinUserValidate").remove();
+                $(".thesisModule").load("Index/GetModuleThesisList", { "eventId": data.eventId });
+            }
+        });
+    })
+
+    $("#passwordLogin").on("click", function () {
+        var pwInput = $("#accessPassword").val()
+        var pwMD5 = $("#pwCode").val();
+        if (!pwInput) {
+            util.alertError("请输入密码！");
+            return false;
+        }
+
+        var eventId = $("#eventId").val();
+        var url = currentDomain + "/" + eventId + "/Index/SubmitLoginPassword";
+
+        util.AjaxPostData(url, { pwInput: pwInput, pwMD5: pwMD5 }, function (data) {
+            if (data.result == true) {
+                $("#PasswordValidate").remove();
+                $(".thesisModule").load(currentDomain + "/" + eventId + "/Index/GetModuleThesisList", { "eventId": data.eventId });
+            }
+        });
+    })
+});
+
+
+
+var countdown = 60;
+function settime(obj) {
+    if (countdown == 0) {
+        obj.removeAttr("disabled");
+        obj.val("发送动态密码");
+        countdown = 60;
+        return;
+    } else {
+        obj.attr("disabled", true);
+        obj.val("重新发送(" + countdown + ")");
+        countdown--;
+    }
+    setTimeout(function () {
+        settime(obj)
+    }
+        , 1000)
+}
+
+
+function ShowLoginDialog() {
+    $("#gotoLogin").addClass("hide");
+    $("#joinUserLoginDialog").removeClass("hide");
+}
+
+//征文下载
+function fileDownLoad(fileUrl, fileName, eventId) {
+    if (fileUrl.trim() == "" || fileUrl.trim() == "null") {
+        return;
+    }
+    window.location.href = currentDomain + "/" + eventId + "/Index/ThesisDownload?FileUrl=" + encodeURIComponent(fileUrl) + "&FileName=" + encodeURIComponent(fileName);
+}
+
+

@@ -1,0 +1,63 @@
+!(function () {
+
+    var initForm = function ($form) {
+        var Form = window.FormModule && window.FormModule.Form;
+        if (Form) {
+            var form = new Form({
+                $form: $form,
+                // rules: rules,
+                // pageType: $.fn.selectpicker ? 0 : 1
+            });
+        }
+    }
+    var modalSwitch = function () {
+        var returnUrl = util.getQueryString('returnUrl');
+        var lang = util.getQueryString('lang');
+        if (!lang) {
+            lang = 'ch';
+        }
+        $(".btn-switch-login").on("click",
+            function () {
+                window.location.href = 'http://newstatic.icrp.xjtu.edu.cn/app/event/BranchVenue/JoinUserLogin?returnUrl=' + returnUrl + '&isFront=0&lang=' + lang;
+            });
+        $(".btn-switch-register").on("click",
+            function () {
+                window.location.href = 'http://newstatic.icrp.xjtu.edu.cn/app/event/BranchVenue/JoinUserRegister?returnUrl=' + encodeURIComponent(returnUrl) + '&isFront=1&lang=' + lang;
+            });
+    }
+    var modalLoginSwitch = function () {
+        $(".modal-o-login .nav-pills").on("click", "a", function (e) {
+            var $e = $(e.target).closest("a")
+            var $form = $("#formLogin31huiyi")
+            var $lis = $(".modal-o-login .nav-pills li")
+            var $li = $e.closest("li")
+            var $Type = $form.find("input[name=Type]")
+            var val = $li.data("value")
+            $lis.removeClass("active")
+            $li.addClass("active")
+            $Type.val(val)
+            if (val === 1) {// code
+                $form.find(".form-group-o-code").removeClass("hide")
+                var $hideInput = $form.find(".form-group-o-pwd").addClass("hide").find("input");
+                $('#ContactPwdFind').addClass('hide');
+            } else {// pwd
+                $form.find(".form-group-o-pwd").removeClass("hide")
+                var $hideInput = $form.find(".form-group-o-code").addClass("hide").find("input");
+                $('#ContactPwdFind').removeClass('hide');
+            }
+            $hideInput.val("")
+            $hideInput.resetForm()
+        })
+    }
+
+    $(function () {
+        // 登录模块
+        var $formLogin = $("#formLogin31huiyi")
+        // 注册模块
+        var $formReg = $("#regForm")
+        initForm($formLogin)
+        initForm($formReg)
+        modalLoginSwitch()
+        modalSwitch()
+    });
+})()

@@ -1,0 +1,461 @@
+/*轮播图*/
+.wd-z9b00 .widget-head {
+    display: none\0;
+}
+.wd-z9b00 .widget-body {
+    padding: 0\0;
+}
+body .widget.wd-z9b00>.widget-body {
+    border: none\0;
+}
+.carousel.carousel-init {
+    min-height: 240px\0;
+}
+.carousel {
+    position: relative\0;
+}
+.carousel-indicators {
+    position: absolute\0;
+    bottom: 20px\0;
+    left: 50%\0;
+    z-index: 15\0;
+    width: 60%\0;
+    margin-left: -30%\0;
+    padding-left: 0\0;
+    list-style: none\0;
+    text-align: center\0;
+}
+
+.carousel-indicators li {
+    display: inline-block\0;
+    width: 10px\0;
+    height: 10px\0;
+    margin: 1px\0;
+    text-indent: -999px\0;
+    border: 1px solid #fff\0;
+    border-radius: 10px\0;
+    cursor: pointer\0;
+    background-color: #000 \0;
+    background-color: rgba(0,0,0,0);
+}
+.carousel-indicators .active {
+    margin: 0\0;
+    width: 12px\0;
+    height: 12px\0;
+    background-color: #fff\0;
+}
+
+.carousel.carousel-init .carousel-inner {
+    min-height: 240px\0;
+}
+.carousel-inner {
+    position: relative\0;
+    overflow: hidden\0;
+    width: 100%\0;
+}
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    width: 100%\0;
+    line-height: 1\0;
+}
+
+.carousel-control.left, .carousel-control.right {
+    background: none\0;
+}
+.carousel-control {
+    position: absolute\0;
+    top: 0\0;
+    left: 0\0;
+    bottom: 0\0;
+    width: 15%\0;
+    opacity: 0.5\0;
+    filter: alpha(opacity=50)\0;
+    font-size: 20px\0;
+    color: #fff\0;
+    text-align: center\0;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6)\0;
+}
+.carousel-control .fa-chevron-left, .carousel-control .fa-chevron-right, .carousel-control .icon-prev, .carousel-control .icon-next {
+    width: 30px\0;
+    height: 30px\0;
+    margin-top: -15px\0;
+    font-size: 30px\0;
+}
+.carousel-control .icon-prev, .carousel-control .fa-chevron-left {
+    left: 50%\0;
+    margin-left: -15px\0;
+}
+.carousel-control .icon-prev, .carousel-control .icon-next, .carousel-control .fa-chevron-left, .carousel-control .fa-chevron-right {
+    position: absolute\0;
+    top: 50%\0;
+    z-index: 5\0;
+    display: inline-block\0;
+}
+.carousel-control.right {
+    left: auto\0;
+    right: 0\0;
+    background-repeat: repeat-x\0;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+}
+.carousel-control .icon-next, .carousel-control .fa-chevron-right {
+    right: 50%\0;
+    margin-right: -15px\0;
+}
+.carousel-inner>.item {
+	display: none\0;
+    position: relative\0;
+    float: left\0;
+    width: 100%\0;
+}
+.carousel-inner>.item.active{
+	display: block\0;
+}
+
+
+/*会议日程的样式*/
+.widget.wd-z0202 .widget-body{
+	padding: 20px\0;
+}
+.list.z0202{
+	padding-left: 120px\0;
+    font-size: 16px\0;
+    color: #192c36\0;
+}
+.list.z0202 .ele:first-child{
+	padding-top: 0\0;	
+}
+.list.z0202 .ele{
+	padding: 10px 0\0;
+    position: relative\0;
+    padding-left: 2px\0;
+}
+.list.z0202 .ele:before{
+	content: " ";
+    border-right: 2px solid #eee\0;
+    position: absolute\0;
+    top: 0\0;
+    bottom: 0\0;
+    left: 0\0;
+    margin-left: -20px\0;
+}
+.list.z0202 .ele-date .txt-date{
+	display: block\0;
+}
+.list.z0202 .txt-date{
+    position: absolute\0;
+    margin-left: -120px\0;
+    display: none\0;
+}
+.list.z0202 .txt-info{
+	padding: 14px 20px\0;
+    background: #f4f7f8\0;
+    margin-top: 10px\0;
+    color: #8c9397\0;
+    max-width: 600px\0;
+}
+.list.z0202 .txt-author {
+    margin-left: 20px\0;
+    font-size: 14px\0;
+    vertical-align: bottom\0;
+}
+.list.z0202 .txt{
+	vertical-align: top\0;
+}
+.list.z0202 i.fa{
+	font-weight: bold\0;
+    display: block\0;
+    position: absolute\0;
+    width: 16px\0;
+    height: 16px\0;
+    margin-left: -28px\0;
+    margin-top: 2px\0;
+    background-color: #fff\0;
+    color: #00bbce\0;
+}
+
+/*参会嘉宾区域的背景色及嘉宾说明的位置*/
+.widget.wd-z0302 .widget-body{
+	padding: 20px\0;
+    background: #f4f4f4\0;
+}
+.media.z0102 .media-bodying{
+	font-size: 16px\0;
+    color: #192c36\0;
+    padding: 10px\0;
+    padding-top: 0\0;
+}
+.media.z0102{
+	vertical-align: top\0;
+    padding: 10px\0;
+    display: inline-block\0;
+    background: #fff\0;
+    width: 30%\0;
+    margin:12px\0;
+}
+.media.z0102.list-item{
+    margin:1.47%\0;
+}
+.media.z0102 .media-object{
+	margin: 0 auto\0;
+    max-width: 100%\0;
+}
+.media.z0102 .media-heading{
+	font-size: 18px\0;
+    font-weight: normal\0;
+    line-height: 20px\0;
+    padding: 10px 0\0;
+    color: #407db5\0;
+    white-space: nowrap\0;
+    text-overflow: ellipsis\0;
+    overflow: hidden\0;
+    text-align: center\0;
+}
+.media-heading{
+	margin-top: 0\0;
+    margin-bottom: 5px\0;
+}
+.media.z0102 .txt-company{
+	color: #8c9397\0;
+    text-overflow: ellipsis\0;
+    overflow: hidden\0;
+    border-top: 1px dashed #eee\0;
+    padding: 10px 0\0;
+    max-height: 78px\0;
+}
+/*文章列表*/
+.widget.wd-z0702 .widget-body{
+	padding: 20px\0;
+    background: #f4f4f4\0;
+}
+.list.z0702:first-child {
+    margin-top: -10px\0;
+}
+.list.z0702 {
+    margin: 0 -10px\0;
+}
+.media.z0201 {
+    vertical-align: top\0;
+    padding: 10px\0;
+    display: inline-block\0;
+    background: #fff\0;
+    width: 30%\0;
+    margin:12px\0;
+}
+.media.z0202.list-item{
+    margin:1.47%\0;
+}
+.media.z0201 .media-left {
+    float: none\0;
+    display: block\0;
+    padding: 10px\0;
+    min-height: 100px\0;
+}
+.media.z0201 .media-body {
+    display: block\0;
+    width: auto\0;
+    padding: 10px\0;
+    padding-top: 0\0;
+}
+.media.z0201 .media-bodying {
+    font-size: 14px\0;
+    color: #192c36\0;
+}
+.media.z0201 .media-heading {
+    font-size: 16px\0;
+    font-weight: normal\0;
+    line-height: 24px\0;
+    margin-top: 10px\0;
+    color: #407db5\0;
+    overflow: hidden\0;
+    max-height: 44px\0;
+    display: -webkit-box\0;
+    -webkit-line-clamp: 2\0;
+    -webkit-box-orient: vertical\0;
+}
+.media.z0201 .txt-summary {
+    overflow: hidden\0;
+    max-height: 66px\0;
+    display: -webkit-box\0;
+    -webkit-line-clamp: 3\0;
+    -webkit-box-orient: vertical\0;
+}
+.media.z0201 .media-object {
+    margin: 0 auto\0;
+    max-width: 100%\0;
+}
+/*选择票种*/
+.widget-o-choiseTicket .input-group-number input {
+    line-height: 11px\0;
+}
+.input-group-number .input-group-btn .btn{
+    margin-left: 10px\0;
+}
+.input-group-number .input-group-btn:first-child .btn{
+    margin-left: 0px\0;
+}
+/*价格在同一水平线*/
+.table-pay-2.table-pay .list-stats{
+	float: right\0;
+}
+.table-pay .list-stats .val-total{
+	line-height: 32px\0;
+	float: left\0;
+}
+.table-pay .list-stats .lbl{
+	position: relative\0;
+	line-height: 32px\0;
+	float: left\0;
+}
+ .table-pay .list-stats .unit{
+ 	line-height: 32px\0;
+ }
+
+/*报名提示*/
+label{
+    max-width: none\0;
+}
+.con-tit{
+    line-height: 34px\0;
+}
+
+/*页脚*/
+/*.container-fluid.menu-hidden{
+	margin-bottom: 0px!important;
+}
+.to-footer.footer-pc {
+    width: initial;
+    border-top: inherit;
+    padding: 0;
+    position: inherit;
+    word-break: inherit;
+    font-size: inherit;
+    height: initial;
+    line-height: inherit;
+    background: #606060;
+}
+.to-footer.footer-pc .site-links {
+    padding: 50px 0;
+    border-bottom: 1px solid #737373;
+}
+.to-footer.footer-pc .col-md-3 {
+    width: 20%;
+    min-width: 228px;
+}
+.to-footer.footer-pc .site-links .link-title {
+    width: 180px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: normal;
+}
+.to-footer.footer-pc .site-links .link-title .to-icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-right: 13px;
+    background-image: url(../../images/to-icons.png);
+    background-repeat: no-repeat;
+}
+.to-footer.footer-pc .site-links .link-list {
+    margin: 0 auto;
+    height: 180px;
+    list-style-type: none;
+    border-right: 1px solid #737373;
+}
+.to-footer.footer-pc .site-links .link-list li {
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    width: 90px;
+    margin: 0 auto;
+    font-size: 16px;
+    list-style: none;
+}
+.to-footer.footer-pc .site-links .link-list li a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 14px;
+}
+.to-icon-tools {
+    background-position: -1px -711px;
+}
+.to-icon-news {
+    background-position: -107px -709px;
+}
+.to-icon-about {
+    background-position: -216px -710px;
+}
+.to-icon-partner {
+    background-position: -13px -1576px;
+}*/
+/*页尾版权*/
+/*.to-footer-copyrights {
+    height: 70px;
+    background-color: #383838;
+}
+.to-footer-copyrights .copyrights {
+    margin-top: 20px;
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #a1a1a1;
+}
+.to-footer-copyrights .copyrights .left {
+    float: left;
+    height: 40px;
+    line-height: 18px;
+    width: 55%;
+    text-align: right;
+    padding-top: 4px;
+}
+.to-footer-copyrights .copyrights .right {
+    float: right;
+    width: 45%;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    text-align: left;
+}
+.to-footer-copyrights .copyrights .right a:first-child {
+    margin-left: 20px;
+}
+.to-footer-copyrights .copyrights .right a {
+    display: inline-block;
+    margin: 0 10px;
+}
+.to-footer-copyrights .copyrights .right a img {
+    vertical-align: middle;
+}*/
+/*订单信息，输入框超出范围*/
+.table-pay-1.table-pay .list-stats-bg{
+	position: relative\0;
+}
+/*如何取票*/
+#content{
+	overflow: visible\0;
+}
+.innerT .popover{
+    width: 1048px\0;
+}
+.glyphicons.ok i:before{
+    content: ' ';
+    width: 60px\0;
+    height: 60px\0;
+}
+/*付款*/
+.box-payType .ele i.round{
+    content: " ";
+    display: block\0;
+    width: 18px\0;
+    height: 18px\0;
+    position: absolute\0;
+    top: 31px\0;
+    left: 10px\0;
+    background: url("../../img/audience/pay/ico-radio.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/img/audience/pay/ico-radio.png*/ no-repeat 0 0\0;
+    background-size: 100% auto\0; 
+    z-index: 99\0; 
+}
+.box-payType .ele i.round.hide{
+    display: block!important;
+}

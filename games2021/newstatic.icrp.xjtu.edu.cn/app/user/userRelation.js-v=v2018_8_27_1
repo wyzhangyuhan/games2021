@@ -1,0 +1,37 @@
+$(function () {
+    $("#UserRelationSpanBtn").on("click", function () {
+        var btn = $(this);
+        var isCancelFav = btn.hasClass("cancelFav");
+        var baseUrl = currentDomain + "/" + $('#_EventId_').val();
+        var urlrelation = baseUrl + "/join/SetUserRelation";
+        if (isCancelFav) {
+            urlrelation = baseUrl + "/join/CancelUserRelation";
+        }
+        util.AjaxPostData(urlrelation, null, function (data) {
+            if (data.code == 0)
+            {
+                setFavHtml(isCancelFav ? 0 : 1, btn);
+                //util.AjaxGet(currentDomain + $('#_EventId_').val() + "/join/GetFavsUserCount", null, function (data) {
+                //    $("#EventFavCountSpan").text(data);
+                //});
+            }
+        });
+    });
+    function setFavHtml(type, btn) {
+        var favText = "我感兴趣";
+        var favCss = "btn-style-9";
+        var cancelText = "取消关注";
+        var cancelCss = "btn-default cancelFav";
+        //btn.removeAttr("class");
+        if (type == 0) {
+            btn.html(favText);
+        	//btn.attr("class", favCss);
+            btn.removeClass(cancelCss).addClass(favCss);
+        }
+        else {
+            btn.html(cancelText);
+            //btn.attr("class", cancelCss);
+            btn.removeClass(favCss).addClass(cancelCss);
+		}
+    }
+});

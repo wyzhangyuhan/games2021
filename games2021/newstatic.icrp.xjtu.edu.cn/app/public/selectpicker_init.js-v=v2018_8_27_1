@@ -1,0 +1,53 @@
+var select_manage = {};
+
+select_manage = {
+	init: function() {
+		var $selectpicker = $('select.selectpicker');
+		if ($selectpicker.length) {
+			$selectpicker.selectpicker().on("change", function () {
+				if ($(this).attr('id') == 'Province' || $(this).attr('id') == 'City') {
+					window.ProviceCity_temp_global = $(this);
+					//一定要延迟100ms,否则数据没有加载完毕
+					setTimeout(function() {
+						var checkFlag = false;
+						if (window.ProviceCity_temp_global.attr('id') == "Province") {
+							if (window.ProviceCity_temp_global.closest("form").find('#City').length > 0) {
+								if (window.ProviceCity_temp_global.val() == -1) //请选择
+									checkFlag = false;
+								else if (window.ProviceCity_temp_global.closest("form").find('#City').find('option').length <= 1) //没有选项时候 
+									checkFlag = true;
+								else
+									checkFlag = false;
+							}
+						} else if (window.ProviceCity_temp_global.attr('id') == "City") {
+							checkFlag = true;
+						}
+
+						if (checkFlag)
+							window.ProviceCity_temp_global.closest("form").validate().element(EventEdit.elements.provinceCity_temp);
+					}, 200);
+				} else {
+					$(this).valid && $(this).valid();
+				}
+			});
+			$selectpicker.each(function () {
+				var $this = $(this);
+				var hasSelected = $this.find("option:gt(0):selected").length;
+				if (!hasSelected) {
+					var value = $this.data("value");
+					if (typeof value === "undefined") {
+						value = $this.attr("datavalue");//datavalue 待删除
+					}
+					if (value) {
+						$this.val(value).selectpicker('refresh');
+					}
+				}
+			});
+		}
+	}
+};
+
+$(function () {
+    //全部的下拉列表
+    select_manage.init();
+});

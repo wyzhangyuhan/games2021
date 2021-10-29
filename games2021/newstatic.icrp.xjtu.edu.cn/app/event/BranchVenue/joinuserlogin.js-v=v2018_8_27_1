@@ -1,0 +1,184 @@
+$(function () {
+	// 登录模块
+    var $form = $("#formLogin31huiyi");
+    var $Key = $form.find("input[name=Key]");
+    var $ReturnURL = $form.find("input[name=ReturnURL]");
+    var $Type = $form.find("input[name=Type]");
+    var $loginCode = $form.find("input[name=loginCode]");
+    var $loginPassword = $form.find("input[name=loginPassword]");
+    var $Code = $form.find("input[name=Code]");
+	var eventId = $("#EventId").val();
+
+	//发送短信验证
+	$("#send_login").on("click", function () {
+		var Key = $Key.val();
+		if (!Key) {
+			util.alertError(Translate("手机号或者邮箱未填写") + "！");
+			return false;
+		}
+
+		var btn = $(this);
+
+		var lang = $("html").attr("lang")=="en"?"English":"";
+		btn.html(Translate("正在发送")).attr("disabled", "disabled");
+		var url =  "/" + eventId + "/SendRandomCode?lang=" + lang;
+		util.AjaxPostData(url, "Key=" + Key, function (data) {
+			if (data.code == 0) {
+				settime(btn);
+			} else {
+				btn.html(Translate("免费获取验证码")).removeAttr("disabled");
+			}
+		});
+	});
+
+    //登录
+    $("#loginBtn").on("click",
+        function () {
+            $this = $(this);
+            var Key = $Key.val();
+            var ReturnURL = $ReturnURL.val();
+            if (!Key) {
+                util.alertError(Translate("手机号或者邮箱未填写") + "！");
+                return false;
+            }
+
+            var type = $Type.val(); //0:密码登录，1:验证码登录
+            var Code = (type === "1" ? $loginCode.val() : $loginPassword.val());
+            $Code.val(Code);
+            var $Codes = $form.find("input[name=loginCode],input[name=loginPassword]");
+            var $CodeFormGroup = $loginCode.closest(".form-group");
+            if ($CodeFormGroup.filter(".disabled").length) {
+            } else {
+                if (!Code) {
+                    if (type === "1") {
+                        util.alertError(Translate("动态密码未填写") + "！");
+                    } else {
+                        util.alertError(Translate("密码未填写") + "！");
+                    }
+                    return false;
+                }
+            }
+            var eventId = $("#EventId").val();
+
+            var url =  "/" + eventId + "/Login/SubmitLoginJoinUser?language=" + $("#langtype").val();
+            
+            //讲密码进行RSA算法加密
+            var modulus = 'B9C35BB74C3512973F0ACEEC81422FCF9187FECEAA7B944401052B030A37C8567F644958D75BAB4C043F09CB47A6927C742A65C4CE728C7506F971A560CEF4D082183D06B295428D21153374FFCEBF7C0C7DA91F1C5788B7098D85B5438E271F30F96B9D0B70BF8865C4C3087C300A0FB4DBBB0CCDC8BAE60022867E75DC94E3';
+            var exponent = '010001';
+            var RsaHelper = new RSAKey();
+            RsaHelper.setPublic(modulus, exponent);
+            Code=RsaHelper.encrypt(Code);
+            
+            util.AjaxPostData(url,
+                { Key: Key, Code: Code, ReturnURL: ReturnURL, type: type },
+                function(data) {
+                },
+                $this);
+        });
+
+	var countdown = 60;
+	var settime = function (obj) {
+		if (countdown == 0) {
+			obj.removeAttr("disabled");
+			obj.html(Translate("发送动态密码"));
+			countdown = 60;
+			return;
+		} else {
+			obj.attr("disabled", true);
+			obj.html(Translate("重新发送") + "(" + countdown + ")");
+			countdown--;
+		}
+	    setTimeout(function() {
+	            settime(obj);
+	        },
+	        1000);
+	}
+
+	// 注册模块
+
+    var $validbyimg = $(".form-group-validbyimg");
+    var $btnValidbyimg = $validbyimg.find(".btn-o-imgcode");
+    var $btnChangeValidbyimg = $validbyimg.find(".btn-o-changeimgcode");
+
+	var getOneImgCode = function () {
+        $btnValidbyimg.find("img").remove();
+        var key = $("input[name='key']").val();
+        if (key) {
+            $btnValidbyimg.append("<img src=\"/GetImgCode?key=" + key+"&v=" + new Date().getTime() + "\"/>");
+        }
+        else {
+            $btnValidbyimg.append("<img src=\"/GetImgCode?v=" + new Date().getTime() + "\"/>");
+        }
+	}
+	var isNeedImg = false;
+	var openImgCode = function () {
+		isNeedImg = true;
+	    var $input = $validbyimg.find("input");
+	    var $regBtn = $("#btnRegister");
+		$validbyimg.removeClass("hide").addClass("form-group-required");
+		// $regBtn.attr("disabled","disabled").prop("disabled",true);
+		$input.prop("required", true);
+		getOneImgCode();
+		$btnChangeValidbyimg.add($btnValidbyimg).on("click", getOneImgCode);
+		//验证图片验证码
+		$input.on("change keyup", function (e) {
+            var code = $(this).val();
+            var key = $("input[name='key']").val();
+			if (code.length === 4) {
+                var url = "/ValidateImgCode";
+                util.AjaxPostData(url, { code: code, key: key }, function (data) {
+				})
+
+			}
+		});
+	}
+	var initImgCode = function () {
+		util.AjaxPostData("/JudgeNeedImgCode", null, function (data) {
+			if (data) {
+				openImgCode();
+			}
+		});
+	}
+	initImgCode();
+
+    var $regBtn = $("#btnRegister");
+	$regBtn.on("click", function () {
+	    var lang = $("html").attr("lang") == "en" ? "English" : "";
+		if(!$regBtn.prop("disabled")&&$("#regForm").valid()) {
+		    var url = "/" + eventId + "/CreateContact?lang=" + lang;
+			util.AjaxPostData(url, $("#regForm").serialize(), function (data) {
+			}, $regBtn);
+		}
+	});
+
+	if (window.Module && window.Module.ContactLogin) {
+		var authUserEmail = window.Module.ContactLogin.authUserEmail;
+		var authUserMobile = window.Module.ContactLogin.authUserMobile;
+		var authUserIsVerifyMobile = window.Module.ContactLogin.authUserIsVerifyMobile;
+		var authUserIsVerifyEmail = window.Module.ContactLogin.authUserIsVerifyEmail;
+	    var $Codes = $form.find("input[name=loginCode],input[name=loginPassword]");
+	    var $CodeFormGroup = $Codes.closest(".form-group");
+		var show$Code = function () {
+			$CodeFormGroup.removeClass("disabled").css("display", "block");
+		}
+		var hide$Code = function () {
+			$CodeFormGroup.addClass("disabled").css("display", "none");
+		    $Codes.each(function(i, e) {
+		        $(e).val("");
+		        $(e).resetForm();
+		    });
+		}
+		var changeLoginName = function () {
+			var Key = $Key.val();
+			if (Key != authUserEmail && Key != authUserMobile) {
+			    show$Code();
+			} else if (authUserIsVerifyMobile == 'true' || authUserIsVerifyEmail == 'true') {
+			    hide$Code();
+			} else {
+			    show$Code();
+			}
+		}
+	    $Key.on("change", changeLoginName);
+	    changeLoginName();
+	}
+});

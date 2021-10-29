@@ -1,0 +1,40 @@
+var recoveryTicket = function () {
+    var code = $("#channelId").val();
+    var $doc = $(document);
+    var eventId = window.eventId,
+        guid = window.guid;
+    var url = "/ReFillTicketInfo";
+    if (code!=undefined&&code.length > 0) {
+        url = url + "?c=" + code;
+    }
+    return {
+        init: function () {
+            $doc.on('click', '.cancel-btn-refill', function () {
+                var lang = $("html").attr("lang");
+                //地理信息大会
+                if (eventId == 1370986151) {
+                    if (window.location.pathname == "/1370986151") {
+                        lang = "en";
+                        if (window.location.href.indexOf("zh") > 0) {
+                            lang = "zh";
+                        }
+                    }
+                }
+                util.AjaxPostData(url, { guid: guid, eventId: eventId, lang: lang }, function () {
+
+                }, $(this));
+
+            });
+            $doc.on('click', '.recovery-btn-refill', function () {
+                var url = $("#recoveryticketurl").val();
+                window.location.href = url;
+            });
+        },
+    }
+}();
+$(function () {
+    recoveryTicket.init();
+    if ($(".recoveryTicket").length > 1) {
+        $(".recoveryTicket")[0].modal('hide');
+    }
+});

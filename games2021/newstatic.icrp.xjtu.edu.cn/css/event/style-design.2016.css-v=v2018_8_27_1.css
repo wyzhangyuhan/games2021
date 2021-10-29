@@ -1,0 +1,490 @@
+/*模板列表*/
+.ui-carousel-1 .list-carousel{width:84.21%;margin:0 auto;font-size:0px;position:relative;}
+.ui-carousel-1 .list-carousel .alllist{position:relative;left:0px;top:0px;}
+.ui-carousel-1 .list-carousel .ele{display:inline-block;margin-right:0px;width:16.67%;min-width:120px;}
+.ui-carousel-1 .list-carousel .txt{font-size:14px;}
+.carousel-control .next,.carousel-control .prev{position:absolute;width:24px;height:42px;margin-top:-21px;margin-left:-12px;left:50%;top:50%;background:url("../../img/event/ico-12.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/img/event/ico-12.png*/ no-repeat;cursor:pointer;}
+.carousel-control .next{background:url("../../img/event/ico-13.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/img/event/ico-13.png*/ no-repeat 0px -52px;}
+.carousel-control .next:hover{background-position:0px 0px;}
+.carousel-control .prev:hover{background-position:0px -52px;}
+.tab-pane .carousel-control{width:7%;opacity:1;filter:alpha(opacity=100);}
+
+/*文章列表*/
+.list.z0702{font-size:0px;}
+.list.z0702 .list-item{font-size:14px;width:33.3%;}
+
+/*会议日程新版*/
+.list.z0203 .change-list{display: none;position:absolute;right:0px;top:0px;width:76px;height:57px;background:url("../../img/event/ico-14.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/img/event/ico-14.png*/ no-repeat center center;cursor:pointer;z-index:1;}
+.list.z0203 .popover{margin-top:12px;margin-left:-60px;border-color:#C6D7DB;border-radius:6px;}
+.list.z0203 .popover.bottom{margin-top:-5px;}
+.list.z0203 .popover.bottom .arrow{border-bottom-color:#c6d7db;}
+.list.z0203 .popover.bottom>.arrow{margin-left:48px;}
+.list.z0203 .popover .popover-content{padding:2px 0;}
+.list.z0203 .popover .popover-content p{color:#0b4854;margin:0;padding:0 19px;line-height:39px;border-bottom:1px solid #e5eef0;cursor:pointer;font-size:14px;}
+.list.z0203 .popover .popover-content p.active{color:#20a0ff;}
+.list.z0203 .popover .popover-content p:hover{color:#20a0ff;}
+.list.z0203 .popover .popover-content p:last-child{border:none;}
+.list.z0203.diglossia .popover{margin-left: -107px;}
+.list.z0203.diglossia .popover.bottom>.arrow{margin-left:95px;}
+.list.z0203{margin-bottom: 20px;font-family:"microsoft yahei","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","\5FAE\8F6F\96C5\9ED1","\5b8b\4f53",sans-serif;}
+.list.z0203 .schedule-search { margin: -20px; margin-bottom: 0; }
+.schedule-search .input-group-btn button.btn{background:#fff;border:none;border-bottom:1px solid #e2e2e2;padding:6px 15px;margin-left:0;height: 34px;}
+.schedule-search input.form-control{z-index:0;border: none; border-bottom:1px solid #e2e2e2;border-right:1px solid #e2e2e2; }
+.list.z0203 .search-result,.list.z0203 .schedule-no{text-align:center;margin-top:20px;display:none;}
+.list.z0203 .list-tab{height:45px;background:#e5e9f2;margin-bottom:20px;font-size:14px;position:relative;overflow:hidden;}
+.list.z0203 .list-tab.mt-20{margin-top:-20px;}
+.list.z0203 .list-tab ul{margin:0;padding:0;height:45px;position:absolute;left:0;width:5000px;}
+.list.z0203 .list-tab li{line-height: 42px;list-style:none;height:45px;padding:0px 20px;float:left;text-align:center;border-bottom:3px solid #e5eef0;color:#333;font-weight:bolder;margin-left:20px;cursor:pointer;}
+.list.z0203 .list-tab li:first-child{margin-left:10px;}
+.list.z0203 .list-tab li.active{color:#333;border-bottom:3px solid #0B4854;}
+.list.z0203 .list-tab li:hover{border-bottom:3px solid #0B4854;color:#333;}
+.list.z0203 .list-tab li span{font-size:12px;display:block;line-height: 14px;font-weight: normal;}
+.list.z0203 .list-tab .right,.list.z0203 .list-tab .left{width:75px;height:45px;position:absolute;right:0px;top:0;text-align:center;color:#c0cfd2;z-index:9;background:#e5e9f2;display:none;}
+.list.z0203 .list-tab .right span,.list.z0203 .list-tab .left span{display:inline-block;width:25px;height:25px;margin-top:10px;background:url("../../img/event/ico-15.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/img/event/ico-15.png*/ no-repeat;cursor:pointer;}
+.list.z0203 .list-tab .left{left:0px;}
+.list.z0203 .list-tab .left span{background-image:url("../../img/event/ico-16.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/img/event/ico-16.png*/;}
+.list.z0203 .ele-list{padding-left:40px;font-size:14px;color:#333;margin: 20px 30px 20px 20px;}
+.list.z0203 .ele{position:relative;padding-left:2px;}
+.list.z0203 .ele:before{content:" ";border-right:2px dashed #aaa;position:absolute;top:3px;bottom:0;left:0;margin-left:-26px;}
+
+.list.z0203 .txt-date{margin-top: -50px;max-width: 100%;text-overflow: ellipsis;cursor: default;overflow: hidden;position:absolute;margin-left:-42px;color:#fff;background-color:#20a0ff;border-radius:32px;}
+.list.z0203 .txt-time{font-weight:bolder;}
+.list.z0203 .txt-tit{font-weight:bolder;}
+.list.z0203 .txt-tit .btn{position:absolute;top:-1px;right:0px;width:89px;text-align:center;font-size:14px;padding:2px 5px;}
+.list.z0203 .son-list .txt-tit .btn{top:-3px;}
+.list.z0203 .txt{vertical-align:top;}
+.list.z0203 .ele i.fa-circle-o{font-weight:bold;display:block;position:absolute;width:16px;height:16px;margin-left:-35px;margin-top:2px;border-radius:50%;border:3px solid #ccc;background:#fff;}
+.list.z0203 .ele i.fa-circle-o:before{content:" ";}
+.list.z0203 .txt-info{padding:14px 20px;background:#f4f7f8;margin-top:10px;color:#8c9397;max-width:600px;}
+.list.z0203 .btn-style-a{color:#fff;background-color:#d6d6d6;border-color:#d6d6d6;}
+.list.z0203 .btn-style-a.active{background-color:#4bc9b5;border-color:#4bc9b5;}
+.list.z0203 i{font-style:normal;}
+.list.z0203 .btn{padding:5px 13px;}
+.list.z0203 .host-list{color:#0b4854;font-size:14px;margin-top:10px;}
+.list.z0203 .brief{color:#999;margin-top:6px;font-size:14px;}
+.z020302 .list-tab li,.z020303 .list-tab li{line-height:40px;}
+.z020302 .txt-date span{display:block;border-bottom:1px solid #cdecf4;padding:4px 5px;font-weight:bolder;}
+.z020302 .see{font-size:14px;color:#4bc8b6;text-align:center;margin-top:45px;display:block;margin-left:-30px;margin-bottom:20px;}
+.list.z0203 .z020303 .ele-list{padding-left:199px;}
+.list.z0203 .z020303 .txt-date{background-color:#fff;border:none;padding:0;width:auto;text-align:right;margin-left:-200px;font-weight:bolder;font-size:16px;line-height:23px;}
+.z020303 .txt-date span{padding:4px 10px;margin-bottom:1px;display:inline-block;background-color:#67c6d9;color:#fff;}
+.z020303 .txt-date i{display:block;padding:4px 4px;background-color:#40abb6;width:136px;}
+
+/*.z020302 .txt-tit {
+    max-width: 59%;
+}
+.z020303 .txt-tit {
+    max-width: 57%;
+}*/
+.list.z0203 .z020301,.list.z0203 .z020302,.list.z0203 .z020303{display:none;}
+.list.z0203 .popupbg{position:fixed;left:0;z-index:1059;right:0;top:0;bottom:0;display:none;}
+.list.z0203 .interest{cursor: pointer;width: 83px;}
+.list.z0203.diglossia .interest{width: 130px;}
+.list.z0203 .interest span{color:#485668;font-weight:normal;font-size: 13px;}
+.list.z0203 .ele-list{line-height: 24px;}
+.list.z0203 .ele-list .interest{float: right;}
+.list.z0203 .diglossia>span{display: block;}
+.list.z0203 .interest i{margin-top: 5px;margin-right:5px;width:14px;height:14px;float:left;background:url("../../i/e31-schedule/icon-06.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/i/e31-schedule/icon-06.png*/ no-repeat left center;}
+.list.z0203 .interest.active i{background-image: url("../../i/e31-schedule/icon-06-active.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/i/e31-schedule/icon-06-active.png*/;}
+.list.z0203 .txt-time{float: left;font-weight: bolder;}
+.list.z0203 .txt-tit{margin-left: 120px;margin-right: 93px;font-weight: bolder;}
+.list.z0203 .txt-tit .summary {
+    color: #999999;
+    font-size: 13px;
+    font-weight: normal;
+}
+.list.z0203.diglossia .txt-tit{margin-right: 135px;}
+.list.z0203 .one-guest span.fontwn{font-weight: normal;margin-left: 10px;}
+.list.z0203 .ele-list .son{padding: 5px 0;background-color: #f6fcff;margin-top: 9px;font-size: 13px;}
+.list.z0203 .son .circle{width:8px;height:8px;background-color:#cfd5e0;float:left;border-radius:8px;margin:8px 6px 0px 15px;}
+.list.z0203 .son .txt-tit{font-weight: normal;}
+.list.z0203 .son .txt-tit .title{margin-bottom: 6px;}
+.list.z0203 .son .one-guest{margin-bottom: 6px;color:#999;}
+.list.z0203 .son .summary {
+    color: #999999;
+    font-size: 13px;
+}
+.list.z0203 .son .txt-time{font-weight: normal;}
+.list.z0203 .one-time-schedule{padding-bottom: 20px;}
+.list.z0203 .one-time-place{padding-top: 50px;}
+.list.z0203 .one-time-place:last-child .one-time-schedule:last-child{padding-bottom: 0px;}
+/*原有模块样式优化*/
+div.widget.wd-z0202 .widget-body,div.widget.wd-z0203 .widget-body{padding: 0px}
+.thumbnail{position:relative;}
+.item .thumbnail .big-img{position:relative;right:-139px;top:-268px;display:none;z-index:9;width:332px;height:377px;max-width:none;}
+.item .thumbnail:hover .big-img{display:block;}
+.list.z0202 .data{margin-bottom:5px;}
+.list.z0202 .txt-date .place{font-size:12px;font-style:normal;display:block;text-align:right;color:#666;margin-top:7px;}
+.list.z0202 .tit{margin-right:86px;position:relative;word-wrap:break-word;display:inline-block;max-width:63%;}
+.list.z0202 .tit .btn{position:absolute;top:-4px;right:-86px;width:71px;text-align:center;}
+.list.z0202 .label-list .btn{margin-right:5px;}
+.list.z0202 .btn-style-c{background-color:#fff;border-color:#ccc;color:#5d6267;}
+.list.z0202 .btn{padding:4px 10px;}
+.list.z0202 .label-list{margin-top:10px;}
+.list.z0202 .host-list{color:#5d6267;font-size:14px;margin-top:10px;}
+.list.z0202 .btn-style-a{color:#fff;background-color:#d6d6d6;border-color:#d6d6d6;}
+.list.z0202 .btn-style-a.active{background-color:#4bc9b5;border-color:#4bc9b5;}
+.list.z0202 .tit i.fa-star-o:before{content:"\f006";}
+.list.z0202 .tit i.fa-star:before{content:"\f005";}
+.list.z0202 .ele .tit i.fa{border:none;position:static;font-weight:normal;display:inline;margin:0;border-radius:0;background:transparent;}
+.list.z0202 .modal .btn{padding:6px 12px;}
+.list.z0202 .form-group-o-code span{line-height:34px;}
+.list.z0202 .form-horizontal{margin-top:20px;}
+.list.z0202 .mt40{margin-top:40px;}
+
+/*旧日程优化*/
+.list.z0204 .interest{cursor: pointer;width: 83px;}
+.list.z0204.diglossia .interest{width: 130px;}
+.list.z0204 .change-list{position:absolute;right:0px;top:0px;width:76px;height:57px;background:url("../../img/event/ico-14.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/img/event/ico-14.png*/ no-repeat center center;cursor:pointer;z-index:1;}
+.list.z0204{margin-bottom: 20px;font-family:"microsoft yahei","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","\5FAE\8F6F\96C5\9ED1","\5b8b\4f53",sans-serif;color: #333;}
+.list.z0204 .interest span{color:#485668;font-weight:normal;font-size: 13px;}
+.list.z0204 .ele-list .interest{float: right;line-height: 24px;cursor: pointer;}
+.list.z0204 .diglossia span{display: block;}
+.list.z0204 .interest i{margin-top: 5px;margin-right:5px;width:14px;height:14px;float:left;background:url("../../i/e31-schedule/icon-06.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/i/e31-schedule/icon-06.png*/ no-repeat left center;}
+.list.z0204 .interest.active i{background-image: url("../../i/e31-schedule/icon-06-active.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/i/e31-schedule/icon-06-active.png*/;}
+
+.list.z0204 .search-result,.list.z0204 .schedule-no{text-align:center;display:none;margin-top: 20px;}
+.list.z0204 .ele-list{padding-left:58px;font-size:14px;color:#333;line-height: 24px;padding-right: 30px;margin: 20px 0;}
+.list.z0204 .ele{padding:10px 0;position:relative;padding-left:2px;padding-top:50px;padding-bottom:0px;}
+.list.z0204 .ele:last-child{padding-bottom:0;}
+.list.z0204 .ele:before{content:" ";border-right:2px dashed #aeaeae;position:absolute;top:0;bottom:0;left:0;margin-left:-25px;}
+.list.z0204 .txt-date{margin-top: -50px;position:absolute;height:32px;line-height:32px;margin-left:-41px;width:110px;color:#fff;background-color:#20a0ff;margin-top:-50px;border-radius:32px;font-size:15px;text-align: center;}
+.list.z0204 .txt-time{float: left;font-weight: bolder;}
+.list.z0204 .title{position:relative;}
+.list.z0204 .txt-tit{margin-left: 120px;margin-right: 93px;font-weight: bolder;}
+    .list.z0204 .txt-tit .summary {
+        color: #999999;
+        font-size: 13px;
+        font-weight:normal;
+    }
+.list.z0204.diglossia .txt-tit{margin-right: 135px;}
+.list.z0204 .one-guest span.fontwn{font-weight: normal;margin-left: 10px;}
+.list.z0204 .txt{vertical-align:top;}
+.list.z0204 .schedule-place{margin-bottom: 5px;display: inline-block;border-radius: 2px;background: #d8dbe4;height:25px;line-height:25px;padding:0 10px;font-size:12px;font-weight:bold;}
+.list.z0204 .one-time-schedule{padding-bottom: 20px;}
+.list.z0204 .ele-list .son{padding: 5px 0;background-color: #f6fcff;margin-top: 9px;font-size: 13px;}
+.list.z0204 .son .circle{width:8px;height:8px;background-color:#cfd5e0;float:left;border-radius:8px;margin:8px 6px 0px 15px;}
+.list.z0204 .son .txt-tit{margin-left: 140px;font-weight: normal;}
+.list.z0204 .son .one-guest{margin-bottom: 6px;color:#999;}
+    .list.z0204 .son .summary {
+        color: #999999;
+        font-size:13px;
+       
+    }
+.list.z0204 .son .txt-time{font-weight: normal;}
+.list.z0204 .ele i.fa-circle-o{font-weight:bold;display:block;position:absolute;width:16px;height:16px;margin-left:-34px;margin-top:2px;border-radius:50%;border:3px solid #ccc;background:#fff;}
+.list.z0204 .ele i.fa-circle-o:before{content:" ";}
+.list.z0204 .son-list .txt-tit .circle{color:#fd9840;position:absolute;top:13px;width:7px;height:7px;border-radius:50% 50%;background:#fd9840;left:6px;}
+.z020304 .txt-date span{display:block;border-bottom:1px solid #cdecf4;padding:4px 5px;font-weight:bolder;}
+.z020304 .see{font-size:14px;color:#4bc8b6;text-align:center;margin-top:45px;display:block;margin-left:-30px;}
+.z020304 .txt-date span{padding:4px 10px;margin-bottom:1px;display:inline-block;background-color:#67c6d9;color:#fff;}
+.z020304 .txt-date i{display:block;padding:4px 4px;background-color:#40abb6;width:136px;}
+.z020304 .txt-tit{max-width:65%;}
+.list.z0204 .popupbg{position:fixed;left:0;z-index:1059;right:0;top:0;bottom:0;display:none;}
+.wd-z0202 pre,.wd-z0203 pre{display:block;padding:0;margin:0;font-size:inherit;line-height:inherit;word-break:break-all;word-wrap:break-word;color:inherit;background-color:inherit;border:none;border-radius:inherit;font-family:inherit;}
+
+/*原有样式修改*/
+.c-audience.c-audience-edit .widget.widget-tabs-o-channel .ico-edit i:before,.c-audience.c-audience-edit .widget.widget-tabs-o-channel .ico-remove i:before{color:#999;}
+
+/*banner设计弹窗新内容添加开始*/
+.modal-banner-bg-setting .x_bg_mode_edit label{width:88px;}
+.modal-banner-bg-setting .line{position:relative;width:174px;margin-top:13px;height:9px;border-left:1px solid #ccc;border-right:1px solid #ccc;margin-bottom:5px;}
+.modal-banner-bg-setting .line-center{float:left;height:5px;width:172px;border-bottom:1px solid #ccc;}
+.modal-banner-bg-setting .line-over{font-size:12px;color:#999;position:absolute;line-height:18px;width:55px;text-align:center;top:-4px;left:59px;z-index:3;background-color:#fff;}
+.modal-banner-bg-setting .short-line{width:75px;margin-left:50px;margin-top:5px;}
+.modal-banner-bg-setting .short-line .line-center{width:73px;}
+.modal-banner-bg-setting .short-line .line-over{left:9px;}
+.modal-banner-bg-setting .bgeee{width:174px;height:40px;background-color:#eee;margin-right:15px;float:left;padding-left:50px;}
+.modal-banner-bg-setting .bgeee .txt{width:75px;height:40px;border:1px dashed #999;text-align:center;line-height:38px;font-size:12px;color:#999;}
+.modal-banner-bg-setting .info-txt{font-size:12px;color:#999;line-height:17px;float:left;padding-top:3px;}
+
+/*banner设计弹窗新内容添加结束*/
+
+/*选择门票开始*/
+.table-pay.table-pay-2>tbody>tr>th .icos .ico{display:inline-block;width:20px;height:20px;background:url("../../img/event/design/icon-audit-pc.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/img/event/design/icon-audit-pc.png*/ no-repeat left center;background-size:100%}
+.table-pay.table-pay-2>tbody>tr>th .icos .ico.ico-2{background-image:url("../../img/event/design/icon-discount-pc.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/img/event/design/icon-discount-pc.png*/;}
+.table-pay.table-pay-2>tbody>tr>th .icos .ico.ico-3{background-image:url("../../img/event/design/icon-verify-pc.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/img/event/design/icon-verify-pc.png*/;}
+.table-pay.table-pay-2>tbody>tr>th .icos .ico.ico-4{background-image:url("../../img/event/design/icon-group-pc.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/img/event/design/icon-group-pc.png*/;}
+.table-pay.table-pay-2>tbody>tr>th .icos .ico.ico-5{background-image:url("../../img/event/design/icon-public-pc.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/img/event/design/icon-public-pc.png*/;}
+
+/*选择门票结束*/
+
+/*嘉宾开始--时间来到了2018*/
+.design-module-search{
+	padding: 10px 20px;
+    border-bottom: 1px solid #e8e8e8;
+    overflow: hidden;
+}
+.design-module-search .input-group{
+    width: 250px;
+    float: left;
+}
+.design-module-search .input-group .form-control{
+    border: 1px solid #e8e8e8;
+    z-index: 0;
+}
+.design-module-search .input-group .input-group-btn .btn {
+    border: 1px solid #e2e2e2;
+    border-left: none;
+    background: #fff;
+    padding: 6px 15px;
+    margin-left: 0;
+    height: 34px;
+}
+.widget.wd-z0302 .widget-body{
+	padding: 0px;
+}
+.table.design-table-01{
+	font-size: 13px;
+	color: #333;
+	border-bottom: 1px solid #e9e9e9;
+	table-layout: fixed;
+}
+.table.design-table-01 thead th{
+    background: #f3f5f6;
+    padding: 6px 0px 6px 20px;
+    font-weight: normal;
+    font-size: 12px;
+    border: none;
+    text-align: left;
+}
+.table.design-table-01 tbody tr:hover{
+	background: #e9e9e9;
+	cursor: pointer;
+}
+.table.design-table-01 tbody tr td{
+	padding: 15px 0px 15px 20px;
+}
+.table.design-table-01 tbody tr td:last-child{
+    padding-right: 20px;
+}
+.table.design-table-01 tbody td .nowrap{
+    overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.table.design-table-01 .width15,
+.table.design-table-02 .width15
+{
+	width: 15%;
+}
+.table.design-table-01 .width55,
+.table.design-table-02 .width55
+{
+	width: 55%;
+}
+.table.design-table-01 .width20{
+	width: 20%;
+}
+.table.design-table-01 .width50{
+	width: 50%;
+}
+.z030202{
+	padding: 5px 10px;
+}
+.z030202 .one-guest-bg{
+	width: 25%;
+	padding: 15px 10px;
+	float: left;
+}
+.z030202 .one-guest{
+	border-radius: 5px;
+	background-color: #ffffff;
+	font-size: 13px;
+	padding: 20px 2px;
+	text-align: center;
+	height: 220px;
+	cursor: pointer;
+	box-shadow: 0px 1px 5px 0 rgba(3, 0, 0, 0.1);
+	-moz-box-shadow: 0px 1px 5px 0 rgba(3, 0, 0, 0.1);
+    -webkit-box-shadow:0px 1px 5px 0 rgba(3, 0, 0, 0.1);;
+	border: solid 1px #e0e0e0;
+}
+.z030202 .one-guest:hover{
+	box-shadow: 0px 1px 5px 0 rgba(3, 0, 0, 0.3);
+	-moz-box-shadow: 0px 1px 5px 0 rgba(3, 0, 0, 0.3);
+    -webkit-box-shadow:0px 1px 5px 0 rgba(3, 0, 0, 0.3);;
+}
+.z030202 .one-guest .pic{
+	width: 95px;
+	height: 95px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin:0 auto;
+	-webkit-background-size: 100% auto;
+	background-size: 100% auto;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.z030202 .one-guest .pic img{
+	width: 100%;
+	height: 100%;
+}
+.z0302 .z030202 .one-guest p.guest-name{
+	margin-top: 12px;
+	margin-bottom: 10px;
+	line-height: 20px;
+	font-weight: bolder;
+	font-size: 14px;
+}
+.z0302 .z030202 .one-guest p.txt{
+	line-height: 20px;
+	margin:0px;
+    overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	font-size: 13px;
+}
+.z0302 .table-foot-tmp-1{
+	padding: 0 20px;
+}
+.z0302 .seach-result{
+	padding: 10px 20px;
+    display: none;
+    text-align: center;
+}
+.z0302 .pagination li a{
+	cursor: pointer;
+}
+.z030202.z030202-big{
+	padding: 5px 10px;
+}
+.z030202.z030202-big .one-guest-bg{
+	padding: 15px;
+	width: 33.33333%;
+}
+.z030202.z030202-big .one-guest{
+	height: 350px;
+    padding: 20px 0px;
+}
+.z030202.z030202-big .one-guest .pic{
+	width: 85px;
+	height: 85px;
+}
+.z0302 .z030202.z030202-big .one-guest .guest-name{
+	margin-top:8px;
+	margin-bottom: 8px;
+	height: 20px;
+}
+.z030202.z030202-big .role{
+	font-size: 13px;
+	height: 37px;
+	line-height: 20px;
+	padding-bottom: 17px;
+	border-bottom: 1px solid #e9e9e9;
+}
+.z030202-big .intro{
+	padding:13px 15px;
+	font-size: 13px;
+	line-height: 20px;
+	text-align: left;
+	height: 170px;
+	overflow: hidden;
+}
+.z030202-big .intro .more{
+	cursor: pointer;
+	color: #1991eb;
+}
+.z030202-big .intro .txt{
+	height: 146px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 7;
+	overflow: hidden;
+}
+.z0302 .z030202-detail{
+	padding: 30px 20px;
+}
+.z0302 .design-module-back{
+    padding: 15px 20px;
+    border-bottom: 1px solid #e8e8e8;
+}
+.z0302 .design-module-back a{
+	color: #333;
+}
+.z0302 .design-module-back i{
+	float: left;
+	width: 14px;
+	height: 14px;
+	background: url("../../img/event/ico-8.png")/*tpa=http://newstatic.icrp.xjtu.edu.cn/img/event/ico-8.png*/ no-repeat left top;
+	margin-top: 3px;
+    margin-right: 5px;
+}
+.z0302 .guest-detail .pic{
+	width: 150px;
+	height: 150px;
+	float: left;
+}
+.z0302 .guest-detail .pic img{
+	width: 100%;
+	height: 100%;
+}
+.z0302 .guest-detail .info{
+	margin-left: 180px;
+	font-size: 13px;
+	color: #333;
+}
+.z0302 .guest-detail .intro{
+	color: #666;
+	margin-top: 10px;
+	font-size: 13px;
+}
+.z0302 .guest-detail .guest-name{
+	font-size: 20px;
+	font-weight: bolder;
+	margin-bottom: 8px;
+}
+.z0302 .guest-detail .company{
+	margin-right: 10px;
+}
+.z0302 .z030202-detail .title{
+	height: 35px;
+	border-bottom: 1px solid #e3e3e3;
+	line-height: 35px;
+	margin-bottom: 30px;
+	margin-top: 15px;
+}
+.z0302 .z030202-detail .title .left{
+	float: left;
+	font-size: 16px;
+}
+.z0302 .z030202-detail .title .right{
+	color: #1991eb;
+	font-size: 13px;
+	float: right;
+}
+.table.design-table-02{
+	border: solid 1px #b2c1d4;
+	font-size: 14px;
+	text-align: center;
+	color: #333;
+}
+.table.design-table-02 th{
+	background: #f0f8ff;
+	text-align: center;
+	font-weight: normal;
+	border: solid 1px #b2c1d4;
+}
+.table.design-table-02 td{
+	text-align: center;
+	border: solid 1px #b2c1d4;
+}
+.widget.widget-style-2>.widget-body .z0302 td p{
+	margin:0px;
+}
+/*嘉宾结束--时间来到了2018*/
+
+/*表格开始--目前在日程里使用*/
+.table.design-table-03 th { background: #f3f5f6; text-align: left; font-weight: normal; border-bottom: solid 1px #e9e9e9; white-space: nowrap; padding-top: 11px; padding-bottom: 10px; font-weight: normal; font-size: 14px; line-height: 20px; color: #333; }
+.table.design-table-03 td { border-bottom: solid 1px #e9e9e9; font-size: 14px; line-height: 20px; color: #333; }
+.table.design-table-03 p { line-height: 20px !important; font-size: 14px !important; margin-bottom: 0px; }
+.table.design-table-03 .width02 { width: 92px; min-width: 108px; }
+.table.design-table-03 .width02:first-child { padding-left: 20px; }
+.design-table-03 .speaker-info { display: table; }
+.design-table-03 .speaker-info .left { padding-right: 10px; }
+.design-table-03 .speaker-info .left span{font-weight: bolder;}
+.design-table-03 .speaker-info .left,
+.design-table-03 .speaker-info .right { display: table-cell; vertical-align: top; }
+.design-table-03 .speaker-info .name { margin-right: 8px; font-weight: bolder;}
+div.c-audience.c-audience-edit .widget-style-2>.con-ctrl{z-index: 12;}
+/*表格结束--目前在日程里使用*/

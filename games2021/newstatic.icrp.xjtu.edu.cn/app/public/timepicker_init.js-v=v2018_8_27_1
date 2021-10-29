@@ -1,0 +1,370 @@
+
+var timepicker_manage = {};
+timepicker_manage = {
+    init: function ($content) {
+        $content = $content || $(document);
+        /* 日期和时间 */
+        $content.find(".form-control-datetimepicker").each(function () {
+            $(this).datetimepicker({
+                format: 'YYYY-MM-DD HH:mm',
+                forceParse: true,
+                startDate: new Date(),
+                language: "zh-cn",
+                autoclose: true
+            }).on("changeDate", function () {
+                $(this).closest("form").validate().element($(this));
+            });
+        });
+
+        /* 日期和时间 */
+        $content.find(".form-control-datetimepicker-2").each(function () {
+            var $this = $(this);
+            var type = $this.attr("type");
+            var hasHide = $this.hasClass("is-hide");
+            var val = $this.val();
+            var $thisHidden = $this;
+            var hasSyncId = $this.data("dateSync");
+            var $thisDate, $thisTime;
+
+            var setValInit = function () {
+                if (val !== "") {
+                    var valDate = $thisHidden.val().match(/^[\d-]*/);
+                    valDate = valDate && valDate[0] || "";
+                    $thisDate.val(valDate);
+                    var valTime = $thisHidden.val().match(/[\d:]*$/);
+                    valTime = valTime && valTime[0] || "";
+                    valTime = valTime.match(/\d*\:\d*/)[0];
+                    $thisTime.val(valTime);
+                }
+            }
+
+            if (!hasHide) {
+                $this.addClass("is-hide");
+                //if (type !== "hidden") {
+                //$this.after($this.clone().attr("type", "hidden"));
+                //$thisHidden = $this.next();
+                //$this.remove();
+
+                $thisHidden.after('<input type="text" class="form-control form-control-inline form-control-datetime-date" />');
+                $thisDate = $thisHidden.next().after('<input type="text" class="form-control form-control-inline form-control-datetime-time" data-toggle="dropdown" />');
+                $thisTime = $thisDate.next();
+                setValInit();
+
+            } else if ($this.next().hasClass("form-control-datetime-date")) {
+                $thisDate = $thisHidden.next();
+                $thisTime = $thisDate.next();
+                setValInit();
+                return true;
+            }
+
+
+
+            var setVal = function () {
+                var $this = $thisHidden;
+                var valDate = $thisDate.val();
+                var valTime = $thisTime.val();
+                var val;
+
+                if (valDate !== "" && valTime === "") {
+                    //$thisTime.val("00:00");
+                }
+
+                if (valTime !== "" && !/^\d{1,2}:\d{1,2}$/.test(valTime)) {
+                    $thisTime.val("");
+                    valTime = "";
+                }
+
+                val = valDate + (valTime ? (" " + valTime) : "");
+
+                if (valDate !== "" && valTime !== "") {
+                    $this.val(val);
+                } else {
+                    $this.val("");
+                }
+
+                //$this.closest("form").validate().element($this);
+                $this.valid();
+            }
+
+            var setDateEndMinDate = function ($this, syncId) {
+                var isStart = !!$this.data("dateSync");
+
+                //事件触发
+                if (isStart) {
+                    var $endDateTime = $this.closest("form").find(syncId);
+                    if (!$endDateTime.length) {
+                        $endDateTime = $(syncId);
+                    }
+                    var $endDate = $endDateTime.next(".form-control-datetime-date");
+                    var DataEndDate = $endDate.data("DateTimePicker");
+                    var valStartTime = $this.data("DateTimePicker").getDate();
+
+                    DataEndDate.setMinDate(valStartTime);
+
+                    if (DataEndDate.getDate() < valStartTime) {
+                        DataEndDate.setDate($this.val());
+                        $endDate.trigger("blur");
+                    }
+                }
+            }
+
+            $thisDate.data("dateSync", hasSyncId);
+
+
+            $thisDate.datetimepicker({
+                format: 'YYYY-MM-DD',
+                forceParse: true,
+                startDate: new Date(),
+                language: "zh-cn",
+                autoclose: true,
+                pickTime: false
+            }).on("dp.change", setDateEndMinDate, function (e) {
+                // var $this = $(this);
+                // $this.closest("form").validate().element($this);
+
+                // alert("asdf");
+                setVal();
+                var $this = $(this);
+                var syncId = $this.data("dateSync");
+                // var valTime = $thisTime.val();
+                if (syncId) {
+                    e.data($this, syncId);
+                }
+                // if (valTime === "" || valTime==="00:00") {
+                //     $thisTime.trigger("focus").dropdown("toggle");
+                // }
+            });
+
+
+
+            var hasMinDate = $this.data("dateMinDate");
+
+            if (hasSyncId) {
+                var valMinDate = $thisDate.data("DateTimePicker").getDate();
+                $this.closest("form").find(hasSyncId).data("dateMinDate", valMinDate);
+            }
+
+            // 设置日历控件最小值
+            if (hasMinDate) {
+                // setDateEndMinDate($this, $this.data("dateSync"), true);
+                $thisDate.data("DateTimePicker").setMinDate(hasMinDate);
+                $this.data("dateMinDate", null);
+            }
+
+
+            $thisDate.on("blur", function (e) {
+
+                if ($thisDate.val() === "") {
+                    $thisHidden.val("");
+                }
+                var valTime = $thisTime.val();
+                if (valTime === "" || valTime === "00:00") {
+                    $thisTime.trigger("focus").dropdown("toggle");
+                } else {
+                    $thisHidden.valid();
+                }
+
+            });
+
+            //$thisTime.datetimepicker({
+            //    language: "zh-cn",
+            //    format: 'HH:mm',
+            //    pickDate: false
+            //}).on("dp.change", function () {
+            //    setVal();
+            //});
+
+
+            //$(".btn-o-addtag").popover({
+            //    placement: "bottom",
+            //    container: "body",
+            //    html: true,
+            //    content: function () {
+            //        var arr = $(this).data("contentOption");
+
+            //        var $options = $.map(arr, function (e, i) { return "<option>" + e + "</option>" }).join("") || "<option></option>";
+
+            //        return "<div><input type=\"search\" class=\"form-control\" /></div><select class=\"selectpicker bootstrap-select-multi bootstrap-select-multi-static\" multiple=\"multiple\" >\
+            //	" + $options + "\
+            //	</select><div class=\"text-right\"><span class=\"btn btn-primary btn-sm\">确定</span>&ensp;<span class=\"btn btn-default btn-sm\">取消</span></div>";
+            //    }
+            //}).on('show.bs.popover', function () {
+            //    var $this = $(this);
+            //    var $tip = $this.data('bs.popover').$tip.addClass("popover-o-addtag");
+            //}).on('shown.bs.popover', function () {
+            //    var $this = $(this);
+            //    var $tip = $this.data('bs.popover').$tip;
+            //    $tip.find("select.selectpicker").selectpicker();
+            //    $tip.find("input.form-control").on("keyup change", function () {
+            //        var $this = $(this);
+            //        var val = $this.val();
+            //        var $options = $tip.find("select.selectpicker option");
+            //        // $options.prop("disabled",false).removeAttr("style");
+            //        $options.prop("disabled", false);
+            //        // $options.removeClass("is-hide");
+            //        $options.filter(":not(:checked)").filter(function (i) {
+            //            return !(new RegExp(val).test($(this).val()));
+            //            // }).css("display","none").prop("disabled",true).prop("checked",false);
+            //        }).prop("disabled", true).prop("checked", false);
+            //        // }).addclass("is-hide");
+            //        // $tip.find("select.selectpicker").selectpicker({
+            //        // 	hideDisabled: true
+            //        // }).selectpicker("refresh");
+            //        $tip.find("select.selectpicker").selectpicker("refresh");
+            //    })
+            //});
+
+            //$thisTime.popover({
+            //    placement: "bottom",
+            //    container: "body",
+            //    html: true,
+            //    content: function () {
+            //        var $options = "";
+            //        for (var i = 0; i < 24; i++) {
+            //            $options += "<li><a href='#'>" + i + ":00</a></li>" + "<li><a href='#'>" + i + ":30</a></li>";
+            //        }
+            //        var str = '<ul class="dropdown-menu" role="menu">\
+            //          ' + $options + '\
+            //        </ul>';
+
+
+            //        return str;
+            //    }
+            //});
+
+            var $options = "";
+            for (var i = 0; i < 24; i++) {
+                var vali = (i < 10) ? ("0" + i) : i;
+                $options += "<li><a>" + vali + ":00</a></li>" + "<li><a>" + vali + ":30</a></li>";
+            }
+            var str = '<ul class="dropdown-menu dropdown-time pull-right" role="menu">\
+                ' + $options + '\
+            </ul>';
+
+            $thisTime.after(str);
+            var $dropdown = $thisTime.next();
+            $dropdown.on("click", "li a", function () {
+                $thisTime.val($(this).html()).trigger("change");
+            });
+            $thisTime.on("change", function (e) {
+                setVal();
+            }).on("focus", function (e) {
+                $(this).nextAll("small.has-error.help-block").remove();
+            }).on("blur", function (e) {
+                //setVal();
+            });
+
+            //$this.datetimepicker({
+            //    format: 'YYYY-MM-DD HH:mm',
+            //    forceParse: true,
+            //    startDate: new Date(),
+            //    language: "zh-cn",
+            //    autoclose: true
+            //}).on("changeDate", function () {
+            //    var $this = $(this);
+            //    $this.closest("form").validate().element($this);
+            //});
+
+            $this.parent().addClass("has-datetime");
+        });
+
+        /*  时间 */
+        $content.find(".form-control-datetimepicker-sim").each(function () {
+            $(this).datetimepicker({
+                format: 'YYYY-MM-DD',
+                forceParse: true,
+                startDate: new Date(),
+                language: "zh-cn",
+                autoclose: true
+            }).on("changeDate", function () {
+                $(this).closest("form").validate().element($(this));
+            });
+        });
+
+        /*  时间 */
+        $content.find(".form-control-datepicker").each(function () {
+            var $this = $(this);
+            var $parent = $this.parent().css({ position: "relative" });
+            $this.datetimepicker({
+                format: 'YYYY-MM-DD',
+                forceParse: true,
+                startDate: new Date(),
+                language: "zh-cn",
+                autoclose: true,
+                pickTime: false
+            }).on("changeDate", function () {
+                $this.closest("form").validate().element($this);
+            }).on("http://newstatic.icrp.xjtu.edu.cn/app/public/dp.show", function () {
+                if ($this.hasClass("form-control-datepicker-fixed")) {
+                    var $widget = $this.data("DateTimePicker").widget;
+                    var left = $this.get(0).offsetLeft || 0;
+                    var vertical = $parent.height() + 2;
+                    var opt = {
+                        position: "absolute",
+                        left: left
+                    };
+                    if ($widget.css("top") === "auto") {
+                        opt.bottom = vertical;
+                    } else {
+                        opt.top = vertical;
+                    }
+                    $widget.appendTo($parent).css(opt);
+                }
+            });
+        });
+
+
+        //form-control-datepicker-fixed
+        /*  时间 */
+        // $content.find(".form-control-datepicker").each(function () {
+        //     $(this).datetimepicker({
+        //         format: 'YYYY-MM-DD',
+        //         forceParse: true,
+        //         startDate: new Date(),
+        //         language: "zh-cn",
+        //         autoclose: true,
+        //         pickTime: false
+        //     }).on("changeDate", function () {
+        //         $(this).closest("form").validate().element($(this));
+        //     });
+        // });
+
+        /*  纯时间 */
+        //if ($.fn.timepicker) {
+        //$('.form-control-timepicker').timepicker({
+        //    showMeridian: false,
+        //    minuteStep: 5,
+        //    defaultTime: '00:00'
+        //});
+        $content.find(".form-control-timepicker").each(function () {
+            var $this = $(this);
+            var $parent = $this.parent().css({ position: "relative" });
+            $this.datetimepicker({
+                language: "zh-cn",
+                format: 'HH:mm',
+                pickDate: false
+            }).on("http://newstatic.icrp.xjtu.edu.cn/app/public/dp.show", function () {
+                if ($this.hasClass("form-control-timepicker-fixed")) {
+                    var $widget = $this.data("DateTimePicker").widget;
+                    var left = $this.get(0).offsetLeft || 0;
+                    var vertical = $parent.height() + 2;
+                    var opt = {
+                        position: "absolute",
+                        left: left
+                    };
+                    if ($widget.css("top") === "auto") {
+                        opt.bottom = vertical;
+                    } else {
+                        opt.top = vertical;
+                    }
+                    $widget.appendTo($parent).css(opt);
+                }
+            });
+        });
+    }
+};
+
+$(function () {
+    timepicker_manage.init();
+
+});

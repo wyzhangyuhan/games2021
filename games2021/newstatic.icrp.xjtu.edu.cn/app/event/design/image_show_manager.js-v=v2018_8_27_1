@@ -1,0 +1,25 @@
+
+
+/**
+ * 图片下载项
+ */
+var image_show_manager = {
+    init: function () {
+        $(document).on('click', '.x-picture-download-item', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            var $this = $(this);
+            var url = $this.attr('href');
+
+            var wrapper = "#ModalImageShow";
+            $(wrapper + " img").attr('src', url);
+
+            var $dialog = $("#ModalImageShow");
+            $dialog.appendTo("body");
+            $dialog.modal();
+        });
+    }
+};
+
+$(image_show_manager.init);

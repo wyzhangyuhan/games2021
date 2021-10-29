@@ -1,0 +1,109 @@
+/// <reference path="../../app/public/util.js?v=" + @ViewBag.CssJsVersion />
+/// <reference path="../../assets/library/jquery/jquery-1.8.3.min.js?v=" + @ViewBag.CssJsVersion />
+/// <reference path="../../assets/plugins/forms_validator/jquery-validation/dist/jquery.validate.js?v=" + @ViewBag.CssJsVersion />
+/* 这样引用 reference 书写js时候提示更丰富*/
+var plUpload = {};
+var plUpload_option = {
+	container: "imgUpload", //展现上传文件列表的容器，默认是body
+	btn: "btnUpload", //触发浏览文件按钮标签的唯一ID
+	containerMsg: "imgUploadMsg",
+	func: function(path) {}, //回调 path为上传成功返回的文件路径
+	url: "", //上传服务器地址
+	multi: false, //单文件、多文件上传
+	extensions: "zip,rar,doc,docx,xls,xlsx,ppt,pptx,pdf,txt,jpg,gif,png,ico", //选择文件扩展名的过滤器，过滤规则的ext项
+	extensionsTitle: "文件", //选择文件扩展名的过滤器，过滤规则的title项
+	max_file_size: "20mb", //最大上传文件大小
+	runtimes: "html5,flash,silverlight",
+	flash_swf_url: "Moxie.swf"/*tpa=http://event.icrp.xjtu.edu.cn/app/plupload/Moxie.swf*/,
+	silverlight_xap_url: "http://event.icrp.xjtu.edu.cn/app/plupload/Moxie.xap",
+	multipart_params: { "ASPSESSID": "b5fm1jfftmjndl55mecj0wv5" } //上传Url可传更多参数
+};
+plUpload = {
+	config: function(opt) {
+		this.data = ($.isPlainObject(opt) || !opt) ? $.extend(true, {}, plUpload_option, opt) : $.extend({}, plUpload_option);
+	},
+
+	init: function() {
+		var data = this.data;
+		var uploader = new plupload.Uploader({
+			runtimes: data.runtimes,
+			browse_button: data.btn,
+			container: data.container,
+			max_file_size: data.max_file_size,
+			url: data.url,
+			flash_swf_url: data.flash_swf_url,
+			silverlight_xap_url: data.silverlight_xap_url,
+			multi_selection: data.multi == true,
+			filters: [
+				{ title: data.extensionsTitle, extensions: data.extensions }
+			],
+			multipart_params: data.multipart_params
+		});
+		uploader.init();
+		var fileCount = 0;
+		var fileIndex = 1;
+		uploader.bind('FilesAdded', function(up, files) {
+			fileCount = files.length;
+			fileIndex = 1;
+			$.each(files, function(i, file) {
+				$('#' + data.containerMsg).html(file.name + ' (' + plupload.formatSize(file.size) + ')');
+			});
+			up.refresh();
+			uploader.start();
+		});
+
+		uploader.bind('UploadProgress', function(up, file) {
+			var progressInfo = '(上传进度：<b style="color:red;">' + fileIndex + '</b>/' + fileCount + ')';
+			$('#' + data.containerMsg).html(file.name + ' (' + plupload.formatSize(file.size) + ') ' + file.percent + "%<br>" + progressInfo);
+		});
+
+		//uploader.bind('Error', function (up, err) {
+		//    $('#' + data.containerMsg).html("错误: " + err.code + ", 内容: " + err.message + (err.file ? ", 文件: " + err.file.name : ""));
+		//    up.refresh();
+		//});
+
+		uploader.bind('Error', function(up, err) {
+			var msg = "错误: " + err.code + ", 内容: " + err.message + (err.file ? ", 文件: " + err.file.name : "");
+			//alert(data.funerr(up, err) + 'msg=' + msg);
+			msg = data.funerr && data.funerr(up, err) || msg;
+			$('#' + data.containerMsg).html(msg);
+			up.refresh();
+		});
+
+		uploader.bind('FileUploaded', function(up, file, resp) {
+			if (data.FileUploaded) {
+				data.FileUploaded(up, file, resp);
+			} else if (data.func) {
+				data.func(resp.response);
+			}
+
+			$('#' + data.containerMsg).html('');
+			fileIndex++;
+		});
+		uploader.bind('UploadComplete', function (up, files) {
+		    if (data.UploadComplete) {
+		        data.UploadComplete(up, files);
+		    }
+		});
+		uploader.getFileName = function() {
+			var files = uploader.files;
+			var name = files[files.length - 1].name;
+			return name.replace(/\..*?$/, "");
+		}
+		uploader.getFileSuffix = function() {
+			var files = uploader.files;
+			var name = files[files.length - 1].name;
+			return name.match(/\..*?$/)[0];
+		}
+
+		uploader.bind('Init', function(up) {
+			$("input[type=file]").each(function() {
+				var $this = $(this);
+				var accept = $this.attr("accept");
+				if (accept.match(/text\/csv/) && !accept.match(/\.csv/)) {
+					$this.attr("accept", accept + ",.csv");
+				}
+			});
+		});
+	}
+};
